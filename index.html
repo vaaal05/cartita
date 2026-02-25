@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>fofofofo meseees</title>
+
+<style>
+
+/* ===== FONDO ===== */
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#dbefff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* ===== SOBRE ===== */
+#inicio{
+    text-align:center;
+    position:relative;
+    cursor:pointer;
+}
+
+#inicio img{
+    width:300px;
+    display:block;
+}
+
+#textoClick{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    
+    background:#fff;
+    color:#7ec8e3;
+    
+    padding:6px 14px;
+    font-size:14px;
+    font-family:Georgia, serif;
+    font-weight:bold;
+
+    border:2px solid #7ec8e3;
+    border-radius:12px;
+}
+
+/* ===== CARTA ===== */
+#carta{
+    display:none;
+    background:white;
+    width:70%;
+    max-width:1000px;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    overflow-y:auto;
+    max-height:85vh;
+}
+
+/* ===== TÍTULO ===== */
+h1{
+    text-align:center;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+    font-family:Georgia, serif;
+    font-size:32px;
+    border-bottom:2px solid #000;
+    display:inline-block;
+    padding-bottom:5px;
+}
+
+/* ===== TEXTO ===== */
+p{
+    font-size:18px;
+    line-height:1.7;
+    color:#444;
+    white-space:pre-line;
+    font-family:"Times New Roman", Times, serif;
+}
+
+/* ===== GALERÍA ===== */
+.galeria{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.galeria img{
+    width:250px;
+    border-radius:0;
+    box-shadow:0 8px 18px rgba(0,0,0,0.2);
+    opacity:0;
+    transform:translateY(15px);
+    transition:all 1s ease;
+}
+
+.galeria img.mostrar{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== CORAZONES ===== */
+.corazon{
+    position:fixed;
+    pointer-events:none;
+    font-size:16px;
+    color:#ff6f91;
+    animation: desaparecer 0.8s ease-out forwards;
+    z-index:9999;
+}
+
+@keyframes desaparecer{
+    from{opacity:1;}
+    to{opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SOBRE -->
+<div id="inicio" onclick="abrirCarta()">
+    <img src="sobre.png">
+    <div id="textoClick">Click aquí</div>
+</div>
+
+<!-- CARTA -->
+<div id="carta">
+
+    <h1>Para mi cosaroncito de melón ueueueueueu</h1>
+
+    <p>
+No encuentro palabras exactas para describir lo feliz que soy contigo, nunca pensé tener algo tan wonito e increíble como lo que tenemos. Ya cumplimos fo fo fo fo meses juntitos, yeeeeei, siempre estaré eternamente agradecida con papaDios por haber puesto en mi camino a mi Adrián Oswaldo, te quiero como no tienes idea, cosaroncito mío.
+
+Es tan lindo despertar todos los días sabiendo que estamos juntitos, es tan lindo decirnos “BOMDIAAAA”, hablar sobre nuestro día (¿o todo el día?), contarnos chismes, usar esas expresiones que solo los dos entendemos, todo es tan lindo, carajorecontramierda. Sé también que no la estás pasando tan bien con las clases y el calordemierda que no colabora, dale con todo, miloboprecioso, valdrá la pena.
+
+Sigamos haciendo las cosas bien y manteniendo una buena comunicación uwuwuwuw (aunquemuchasvecesmecuestadecirloquepiensoosiento(mejoraréeneso)) porque de verdad mencanta muchote lo nuestro, quiero pasar el resto de mi vida junto a ti. ILOVEYAUUUUUUUU
+I MISS YOU
+BEBECITA
+    </p>
+
+    <div class="galeria">
+        <img src="foto1.png" class="foto">
+        <img src="foto3.jpg" class="foto">
+        <img src="foto2.jpg" class="foto">
+        
+    </div>
+
+</div>
+
+<script>
+
+/* ABRIR CARTA */
+function abrirCarta(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("carta").style.display="block";
+
+    let fotos = document.querySelectorAll(".foto");
+    fotos.forEach((foto, index)=>{
+        setTimeout(()=>{
+            foto.classList.add("mostrar");
+        }, index * 1000);
+    });
+}
+
+/* CORAZONES */
+document.addEventListener("mousemove", function(e){
+    const corazon = document.createElement("span");
+    corazon.className="corazon";
+    corazon.textContent="❤";
+    corazon.style.left=e.clientX+"px";
+    corazon.style.top=e.clientY+"px";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{
+        corazon.remove();
+    },800);
+});
+
+</script>
+
+</body>
+</html>
